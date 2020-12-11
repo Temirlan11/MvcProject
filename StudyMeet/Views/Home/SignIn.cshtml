@@ -1,0 +1,50 @@
+﻿@model StudyMeet.Models.User
+@{
+    ViewBag.Title = "SignIn";
+}
+
+<div class="container" style="width:500px; margin-top:50px">
+    <!-- Default form login -->
+    <form class="text-center border border-light p-5 mt-15" action="SignIn" method="post">
+
+        <p class="h4 mb-4">Sign in</p>
+
+        <!-- Email -->
+         <div class="editor-field">
+            <input type="email" id="defaultLoginFormEmail" name="email" class="form-control mb-4" style="margin-left:100px" placeholder="E-mail">
+            @Html.ValidationMessageFor(model => model.login)
+         </div>
+         <div class="editor-field">
+             <input type="password" id="defaultLoginFormPassword" name="password" class="form-control mb-4" style="margin-left:100px; margin-top:11px" placeholder="Password">
+             @Html.ValidationMessageFor(model => model.password)
+         </div>
+        <div class="d-flex justify-content-around">
+            <div>
+                <!-- Remember me -->
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                    <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                </div>
+            </div>
+            <div>
+                <!-- Forgot password -->
+                <a href="">Forgot password?</a>
+            </div>
+        </div>
+
+        <!-- Sign in button -->
+        <button class="btn btn-info btn-block my-4" style="margin-top:20px" type="submit">Sign in</button>
+
+        <!-- Register -->
+        <p>
+            Not a member?
+            <a href="">Register</a>
+        </p>
+
+    </form>
+    <!-- Default form login -->
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    }

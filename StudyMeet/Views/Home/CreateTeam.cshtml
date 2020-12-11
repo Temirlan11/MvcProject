@@ -1,0 +1,27 @@
+﻿@model StudyMeet.Models.Team
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+@{
+    ViewBag.Title = "CreateTeam";
+}
+
+<h2>CreateTeam</h2>
+
+
+<div class="container" style="width:500px; margin-top:50px">
+    <form class="text-center border border-light p-5 mt-15" action="CreateTeam" method="post">
+        <input type="text" id="defaultLoginFormPassword" name="name" class="form-control mb-4" style="margin-left:100px; margin-top:11px" placeholder="Name">
+        <input type="text" id="defaultLoginFormPassword" name="description" class="form-control mb-4" style="margin-left:100px; margin-top:11px" placeholder="Description">
+        <input type="text" id="defaultLoginFormPassword" name="img_url" class="form-control mb-4" style="margin-left:100px; margin-top:11px" placeholder="Image URL">
+        <input type="number" id="defaultLoginFormPassword" name="max_users" class="form-control mb-4" style="margin-left:100px; margin-top:11px" placeholder="Max Users">
+        <button class="btn btn-info btn-block my-4" style="margin-top:20px" type="submit">Create</button>
+    </form>
+</div>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

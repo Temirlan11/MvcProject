@@ -1,0 +1,49 @@
+﻿@model StudyMeet.Models.User
+@{
+    ViewBag.Title = "SignUp";
+}
+
+<div class="container" style="width:500px; margin-top:50px">
+    <!-- Default form login -->
+    <form class="text-center border border-light p-5 mt-15" action="SignUp" method="post">
+
+        <p class="h4 mb-4">Sign Up</p>
+
+        <input type="text" id="defaultLoginFormPassword" name="fname" class="form-control mb-4" style="margin-left:100px; margin-top:11px" placeholder="First Name">
+
+        <input type="text" id="defaultLoginFormPassword" name="mname" class="form-control mb-4" style="margin-left:100px; margin-top:11px" placeholder="Middle Name">
+
+        <input type="text" id="defaultLoginFormPassword" name="lname" class="form-control mb-4" style="margin-left:100px; margin-top:11px" placeholder="Last Name">
+
+        <input type="number" id="defaultLoginFormPassword" name="age" class="form-control mb-4" style="margin-left:100px; margin-top:11px" placeholder="Age">
+
+        <input type="text" id="defaultLoginFormPassword" name="img_url" class="form-control mb-4" style="margin-left:100px; margin-top:11px" placeholder="Image URL">
+
+        <input type="text" id="defaultLoginFormPassword" name="address" class="form-control mb-4" style="margin-left:100px; margin-top:11px" placeholder="Address">
+
+        <label for="exampleFormControlSelect1">Specialty</label>
+        <select class="form-control" name="specialty_id" style="margin-left:100px;" id="exampleFormControlSelect1">
+            @foreach (var s in ViewBag.specialties)
+            {
+            <option value="@s.Id">@s.Id) @s.shortname</option>
+            }
+        </select>
+
+        <input type="email" id="defaultLoginFormEmail" name="email" class="form-control mb-4" style="margin-left:100px; margin-top:11px" placeholder="E-mail">
+
+        <input type="password" id="defaultLoginFormPassword" name="password" class="form-control mb-4" style="margin-left:100px; margin-top:11px" placeholder="Password">
+
+        <!-- Sign in button -->
+        <button class="btn btn-info btn-block my-4" style="margin-top:20px" type="submit">Sign Up</button>
+
+        <!-- Register -->
+        <p>
+            =You have account?
+            <a href="">Sign In</a>
+        </p>
+
+    </form>
+    <!-- Default form login -->
+</div>
+
+

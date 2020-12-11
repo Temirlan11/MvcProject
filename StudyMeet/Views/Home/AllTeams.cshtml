@@ -1,0 +1,101 @@
+﻿@model IEnumerable<StudyMeet.Models.Team>
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+@{
+    ViewBag.Title = "AllTeams";
+}
+
+@using (Ajax.BeginForm("JsonSearch", new AjaxOptions
+{
+    OnSuccess = "OnSuccess"
+}))
+{
+    <div class="container">
+        <nav class="navbar navbar-dark default-color" style="margin-top:25px">
+            <input class="form-control" type="text" placeholder="Search" name="name" id="name" aria-label="Search">
+            <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
+        </nav>
+    </div>
+}
+<div id="results"></div>
+
+<div class="column">
+
+    <h1>All Teams</h1>
+
+    @foreach (StudyMeet.Models.Team team in Model)
+    {
+        <div class="jumbotron text-center hoverable p-4 mb-4">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-4 offset-md-1 mx-3 my-3">
+
+                    <!-- Featured image -->
+                    <div class="view overlay">
+                        <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" class="img-fluid" alt="Sample image for first version of blog listing" style="width:300px">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-7 text-md-left ml-3 mt-3">
+
+                    <!-- Excerpt -->
+                    <a href="#!" class="green-text">
+                        <h6 class="h6 pb-1"><i class="fas fa-desktop pr-1"></i> Work</h6>
+                    </a>
+
+                    <h3 class="<h3></h3> mb-4">@team.name</h3>
+
+                    <p class="font-weight-normal">
+                        @team.description
+                    </p>
+                    @foreach (var user in ViewBag.users)
+                    {
+                        if (user.Id == team.user_id)
+                        {
+                            <text>  <p class="font-weight-normal">by <a><strong>@user.fname</strong><strong> @user.mname</strong></a>, @team.created_date</p> </text>
+                        }
+                    }
+                    <a class="btn btn-success">Join</a>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- News jumbotron -->
+    }
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        function OnSuccess(data) {
+            var results = $('#results');
+            results.empty();
+            for (var i = 0; i < data.length; i++) {
+                results.append('<p>' + data[i].name + '</p>');
+            }
+        }
+        $(document).ready(function () {
+            $('#submit').click(function (e) {
+                e.preventDefault();
+                var name = $('#name').val();
+                name = encodeURIComponent(name);
+
+                $('#results').load('@Url.Action("AllTeams")?name=' + name);
+        });
+        });
+    </script>
+}
